@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -9,17 +10,24 @@
       <%= flash[:warning] %>
     <% end %>
 
-    <h1>Hello World</h1>
+    <h1 class="col-md-4 mx-auto" style="margin-top: 25px"> Hello World </h1>
 
+    <div class="col-md-4 mx-auto" style="margin-top: 50px">
     <% @shoppingcart.stock.stock_list.each do |item| unless item[:quantity] == 0 %>
-       <h5> <%= item[:name] %>, <%= item[:category] %>, <%= item[:price] %>, <%= item[:quantity] %> </h5>
+    <div class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"> <%= item[:name] %> </h5>
        <form action="/add_to_cart" method="post">
          <input type="hidden" name="item_name" value="<%= item[:name] %>">
          <input type="submit" value="Add to cart" id="add_to_cart(<%=item[:name]%>)">
        </form>
+     </div>
+     <p class="mb-1"> <%= item[:category] %> </p>
+     <small>Price: £<%= item[:price] %> </small><br><small>Quantity in Stock: <%= item[:quantity] %> </small>
+    </div>
+    <br>
     <% end %>
     <% end %>
-
 
     <h2>Shopping Cart:</h2>
 
