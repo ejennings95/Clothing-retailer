@@ -1,0 +1,24 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/elliotjennings/Desktop/tech_test/Clothing-retailer/app/app.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/elliotjennings/Desktop/tech_test/Clothing-retailer/spec/features/webpage_runs_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1555065403
+  }
+}
