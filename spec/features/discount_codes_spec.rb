@@ -38,13 +38,13 @@ feature 'there is a discount code function' do
     expect(page).to have_content('Total Price With Discount Code Applied: £14.00')
   end
 
-  # scenario 'successful qualification for 10 pounds off' do
-  #   visit '/'
-  #   click_button('add_to_cart(Lightweight Patch Pocket Blazer, Deer)')
-  #   fill_in 'discount_code', with: "5poundsoff"
-  #   click_button('discount_code_submit')
-  #   expect(page).to have_content('Total Price With Discount: £165.00')
-  # end
+  scenario 'successful qualification for 10 pounds off' do
+    visit '/'
+    click_button('add_to_cart(Lightweight Patch Pocket Blazer, Deer)')
+    fill_in 'discount_code', with: "10poundsoff"
+    click_button('discount_code_submit')
+    expect(page).to have_content('Total Price With Discount Code Applied: £165.00')
+  end
 
   # scenario 'successful qualification for 15 pounds off' do
   #   visit '/'
