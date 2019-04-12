@@ -1,4 +1,5 @@
 require_relative './stock.rb'
+require_relative './shoppingcarttotal.rb'
 
 class ShoppingCart
 
@@ -17,5 +18,9 @@ class ShoppingCart
     if @shoppingcart.include?(item)
       @shoppingcart.delete(item)
     end
+  end
+
+  def total(shoppingcarttotal = ShoppingCartTotal.new)
+    shoppingcarttotal.total_price(@shoppingcart)
   end
 end
