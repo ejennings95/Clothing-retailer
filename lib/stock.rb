@@ -8,4 +8,9 @@ class Stock
   def stock_list
     @stock
   end
+
+  def check_price(item)
+    @stock.each{ | product | return product[:price] if product[:name] == item }
+    0
+  end
 end
