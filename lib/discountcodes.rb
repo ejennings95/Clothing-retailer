@@ -7,16 +7,16 @@ class DiscountCodes
 
   attr_reader :discount_attempted
 
-  def initialize
-    @discount_attempted = false
-  end
-
   def discount_check(code, shoppingcarttotal, shoppingcart)
     return 5 if discount_five(code) == true
     return 10 if discount_ten(code, shoppingcarttotal) == true
     return 15 if discount_fifteen(code, shoppingcarttotal, shoppingcart) == true
-    update_discout_attempt
     0
+  end
+
+  def code_check(code)
+    return true if code == FIVE_OFF || code == TEN_OFF || code == FIFTEEN_OFF
+    false
   end
 
   def discount_five(code)
@@ -39,7 +39,4 @@ class DiscountCodes
     false
   end
 
-  def update_discout_attempt
-    @discount_attempted = true
-  end
 end

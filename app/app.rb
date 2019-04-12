@@ -9,7 +9,8 @@ class ClothingRetailer < Sinatra::Base
   get '/' do
     session[:shoppingcart] ||= ShoppingCart.new
     @shoppingcart = session[:shoppingcart]
-    flash[:warning] = "Discount voucher has not been successful - try again!"
+    @code_check = session[:code_check]
+    flash[:warning] = "Invaild discount code entered - try again!"
     erb(:index)
   end
 
@@ -25,6 +26,7 @@ class ClothingRetailer < Sinatra::Base
 
   post '/discount_code' do
     session[:shoppingcart].total(params[:discount_code])
+    session[:code_check] = session[:shoppingcart].shoppingcarttotal.discountcodes.code_check(params[:discount_code])
     redirect '/'
   end
 
