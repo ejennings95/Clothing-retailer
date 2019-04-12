@@ -49,4 +49,13 @@ describe 'Stock' do
     end
   end
 
+  context 'return item with quantity one' do
+    it 'should return the values of the item but with the quanity 1' do
+        expect(@stock.find_item_quantity_1('Fine Stripe Short Sleeve Shirt, Green')).to eq({name: "Fine Stripe Short Sleeve Shirt, Green", category: "Men's Casualwear", price: 39.99, quantity: 1})
+    end
+
+    it 'should return the values of the item but with the quanity 1' do
+      expect(@stock.find_item_quantity_1('Bird Print Dress, Black')).to eq({name: "Bird Print Dress, Black", category: "Women's Formalwear", price: 270.00, quantity: 1})
+    end
+  end
 end
