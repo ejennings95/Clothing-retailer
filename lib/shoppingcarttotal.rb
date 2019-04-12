@@ -19,7 +19,7 @@ class ShoppingCartTotal
   end
 
   def total_price_with_discount_check(code, shoppingcarttotal, shoppingcart)
-    if code == nil
+    if code == nil || @price == 0
       @discount_price = two_decimal_places(@price)
     else
       @discount_price = two_decimal_places(@price - @discountcodes.discount_check(code, shoppingcarttotal, shoppingcart))

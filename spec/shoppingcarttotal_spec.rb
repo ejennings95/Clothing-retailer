@@ -20,5 +20,11 @@ describe 'ShoppingCartTotal' do
       allow(stock).to receive(:check_price).and_return(19.0)
       expect(@shoppingcarttotal.total_price(nil, ["Denim Jacket"])).to eq '0.00'
     end
+
+    it 'should not be possible to add a discount to 0' do
+      allow(stock).to receive(:check_price).and_return(0)
+      @shoppingcarttotal.total_price("5poundsoff", [])
+      expect(@shoppingcarttotal.discount_price).to eq '0.00'
+    end
   end
 end
