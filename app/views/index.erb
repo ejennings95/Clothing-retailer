@@ -6,5 +6,12 @@
   </head>
   <body>
     <h1>Hello World</h1>
+
+    <% @shoppingcart.stock.stock_list.each do |item| %>
+       <h5> <%= item[:name] %>, <%= item[:category] %>, <%= item[:price] %>, <%= item[:quantity] %> </h5>
+       <form action="/" method="post">
+         <input type="submit" value="Add to basket" id="add_to_basket(<%=item[:name]%>)">
+       </form>
+    <% end %>
   </body>
 </html>

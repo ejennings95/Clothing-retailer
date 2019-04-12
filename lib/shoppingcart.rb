@@ -1,9 +1,11 @@
+require_relative './stock.rb'
 
 class ShoppingCart
 
-  attr_reader :shoppingcart
+  attr_reader :shoppingcart, :stock
 
-  def initialize
+  def initialize(stock = Stock.new)
+    @stock = stock
     @shoppingcart = []
   end
 

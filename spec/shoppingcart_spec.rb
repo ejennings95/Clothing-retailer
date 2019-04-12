@@ -2,8 +2,10 @@ require_relative '../lib/shoppingcart.rb'
 
 describe 'ShoppingCart' do
 
+  let(:stock) { double(:stock) }
+
   before(:each) do
-    @testshoppingcart = ShoppingCart.new
+    @testshoppingcart = ShoppingCart.new(stock)
   end
 
   context 'add_to_cart' do

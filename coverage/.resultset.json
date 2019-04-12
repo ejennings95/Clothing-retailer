@@ -3,14 +3,46 @@
     "coverage": {
       "/Users/elliotjennings/Desktop/tech_test/Clothing-retailer/app/app.rb": [
         1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        4,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/elliotjennings/Desktop/tech_test/Clothing-retailer/lib/shoppingcart.rb": [
+        1,
+        null,
+        1,
         null,
         1,
         null,
         1,
-        3,
+        5,
+        5,
         null,
         null,
         1,
+        1,
+        null,
+        null
+      ],
+      "/Users/elliotjennings/Desktop/tech_test/Clothing-retailer/lib/stock.rb": [
+        null,
+        1,
+        null,
+        1,
+        4,
+        null,
+        null,
+        1,
+        4,
+        null,
         null
       ],
       "/Users/elliotjennings/Desktop/tech_test/Clothing-retailer/spec/features/add_to_basket_spec.rb": [
@@ -18,14 +50,33 @@
         1,
         1,
         1,
-        0,
+        1,
         null,
         null,
         1,
         1,
         1,
-        0,
-        0,
+        1,
+        null,
+        null
+      ],
+      "/Users/elliotjennings/Desktop/tech_test/Clothing-retailer/spec/features/stock_appear_on_page_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -36,8 +87,33 @@
         1,
         null,
         null
+      ],
+      "/Users/elliotjennings/Desktop/tech_test/Clothing-retailer/spec/shoppingcart_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        2,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        4,
+        null,
+        null,
+        null
+      ],
+      "/Users/elliotjennings/Desktop/tech_test/Clothing-retailer/spec/stock_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1555068428
+    "timestamp": 1555070643
   }
 }
