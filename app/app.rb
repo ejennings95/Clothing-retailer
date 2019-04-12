@@ -1,12 +1,15 @@
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative '../lib/shoppingcart.rb'
 
 class ClothingRetailer < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
 
   get '/' do
     session[:shoppingcart] ||= ShoppingCart.new
     @shoppingcart = session[:shoppingcart]
+    flash[:warning] = "Discount Voucher has not been successful - try again!"
     erb(:index)
   end
 

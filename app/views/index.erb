@@ -5,6 +5,10 @@
     <title>Clothing Retailer</title>
   </head>
   <body>
+    <% if @shoppingcart.shoppingcarttotal.discountcodes.discount_attempted || @shoppingcart.shoppingcarttotal.discount_price == @shoppingcart.shoppingcarttotal.price %>
+      <%= flash[:warning] %>
+    <% end %>
+
     <h1>Hello World</h1>
 
     <% @shoppingcart.stock.stock_list.each do |item| %>
