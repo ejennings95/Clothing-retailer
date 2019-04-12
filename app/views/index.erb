@@ -25,12 +25,16 @@
        </form>
     <% end %>
 
-    <h2>Total Price: £<%= @shoppingcart.total %></h2>
+    <h2>Total Price: £<%= @shoppingcart.shoppingcarttotal.price %></h2>
 
-    <form action="/" method="post">
-      <input type="text" class="form-control" placeholder="Discount Code" id="discount_code">
-      <input type="submit" value="Submit" id="discount_code_submit">
-    </form>
+    <% if @shoppingcart.shoppingcarttotal.discount_price == @shoppingcart.shoppingcarttotal.price %>
+      <form action="/discount_code" method="post">
+        <input type="text" class="form-control" placeholder="Discount Code" id="discount_code" name="discount_code">
+        <input type="submit" value="Submit" id="discount_code_submit">
+      </form>
+    <% else %>
+      <h3>Total Price With Discount Code Applied: £<%= @shoppingcart.shoppingcarttotal.discount_price %> </h3>
+    <% end %>
 
   </body>
 </html>

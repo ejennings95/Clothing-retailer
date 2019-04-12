@@ -20,5 +20,10 @@ class ClothingRetailer < Sinatra::Base
     redirect '/'
   end
 
+  post '/discount_code' do
+    session[:shoppingcart].total(params[:discount_code])
+    redirect '/'
+  end
+
     run! if app_file == $0
 end
