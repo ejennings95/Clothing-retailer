@@ -19,7 +19,7 @@
 
     <% @shoppingcart.shoppingcart.each do |item| %>
        <h5> <%= item %> </h5>
-       <form action="/" method="post">
+       <form action="/remove_from_cart" method="post">
          <input type="hidden" name="item_name" value="<%= item %>">
          <input type="submit" value="Remove from cart" id="remove_from_cart(<%=item%>)">
        </form>

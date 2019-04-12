@@ -15,5 +15,10 @@ class ClothingRetailer < Sinatra::Base
     redirect '/'
   end
 
+  post '/remove_from_cart' do
+    session[:shoppingcart].remove_from_cart(params[:item_name])
+    redirect '/'
+  end
+
     run! if app_file == $0
 end
