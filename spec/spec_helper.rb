@@ -12,6 +12,23 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+require 'capybara'
+require 'capybara/rspec'
+require 'rspec'
+require 'simplecov'
+require 'simplecov-console'
+require 'rubocop'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::Console,
+  # Want a nice code coverage website? Uncomment this next line!
+  # SimpleCov::Formatter::HTMLFormatter
+])
+SimpleCov.start
+
+require File.expand_path '../app/app.rb', __dir__
+
+Capybara.app = ClothingRetailer
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
