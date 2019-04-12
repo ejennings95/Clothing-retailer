@@ -46,12 +46,12 @@ feature 'there is a discount code function' do
     expect(page).to have_content('Total Price With Discount Code Applied: £165.00')
   end
 
-  # scenario 'successful qualification for 15 pounds off' do
-  #   visit '/'
-  #   click_button('add_to_cart(Flip Flops, Red)')
-  #   click_button('add_to_cart(Fine Stripe Short Sleeve Shirt, Grey)')
-  #   fill_in 'discount_code', with: "15poundsoff"
-  #   click_button('discount_code_submit')
-  #   expect(page).to have_content('Total Price With Discount: £53.99')
-  # end
+  scenario 'successful qualification for 15 pounds off' do
+    visit '/'
+    click_button('add_to_cart(Leather Driver Saddle Loafers, Tan)')
+    click_button('add_to_cart(Fine Stripe Short Sleeve Shirt, Grey)')
+    fill_in 'discount_code', with: "15poundsoff"
+    click_button('discount_code_submit')
+    expect(page).to have_content('Total Price With Discount Code Applied: £68.99')
+  end
 end

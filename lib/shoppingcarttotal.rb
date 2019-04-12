@@ -13,15 +13,15 @@ class ShoppingCartTotal
   def total_price(code, shoppingcart, stock = Stock.new)
     @price = 0
     shoppingcart.each{ | item | @price += stock.check_price(item) }
-    total_price_with_discount_check(code, @price)
+    total_price_with_discount_check(code, @price, shoppingcart)
     @price = two_decimal_places(@price)
   end
 
-  def total_price_with_discount_check(code, shoppingcarttotal, discountcodes = DiscountCodes.new)
+  def total_price_with_discount_check(code, shoppingcarttotal, shoppingcart, discountcodes = DiscountCodes.new)
     if code == nil
       @discount_price = two_decimal_places(@price)
     else
-      @discount_price = two_decimal_places(@price - discountcodes.discount_check(code, shoppingcarttotal))
+      @discount_price = two_decimal_places(@price - discountcodes.discount_check(code, shoppingcarttotal, shoppingcart))
     end
   end
 

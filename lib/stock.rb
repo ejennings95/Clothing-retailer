@@ -13,4 +13,9 @@ class Stock
     @stock.each{ | product | return product[:price] if product[:name] == item }
     0
   end
+
+  def check_category(item, category)
+    @stock.each{ | product | return true if product[:name] == item && product[:category] == category}
+    false
+  end
 end
