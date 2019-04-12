@@ -9,7 +9,7 @@ class ClothingRetailer < Sinatra::Base
   get '/' do
     session[:shoppingcart] ||= ShoppingCart.new
     @shoppingcart = session[:shoppingcart]
-    flash[:warning] = "Discount Voucher has not been successful - try again!"
+    flash[:warning] = "Discount voucher has not been successful - try again!"
     erb(:index)
   end
 
