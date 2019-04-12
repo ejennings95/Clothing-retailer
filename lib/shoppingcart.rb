@@ -12,4 +12,10 @@ class ShoppingCart
   def add_to_cart(item)
     @shoppingcart << item
   end
+
+  def remove_from_cart(item)
+    if @shoppingcart.include?(item)
+      @shoppingcart.delete(item)
+    end
+  end
 end
