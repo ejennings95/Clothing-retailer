@@ -5,19 +5,21 @@
     <title>Clothing Retailer</title>
   </head>
   <body>
-    <% if @shoppingcart.shoppingcarttotal.discountcodes.discount_attempted || @shoppingcart.shoppingcarttotal.discount_price == @shoppingcart.shoppingcarttotal.price %>
+    <% if @shoppingcart.shoppingcarttotal.discountcodes.discount_attempted == true && @shoppingcart.shoppingcarttotal.discount_price == @shoppingcart.shoppingcarttotal.price %>
       <%= flash[:warning] %>
     <% end %>
 
     <h1>Hello World</h1>
 
-    <% @shoppingcart.stock.stock_list.each do |item| %>
+    <% @shoppingcart.stock.stock_list.each do |item| unless item[:quantity] == 0 %>
        <h5> <%= item[:name] %>, <%= item[:category] %>, <%= item[:price] %>, <%= item[:quantity] %> </h5>
        <form action="/add_to_cart" method="post">
          <input type="hidden" name="item_name" value="<%= item[:name] %>">
          <input type="submit" value="Add to cart" id="add_to_cart(<%=item[:name]%>)">
        </form>
     <% end %>
+    <% end %>
+
 
     <h2>Shopping Cart:</h2>
 

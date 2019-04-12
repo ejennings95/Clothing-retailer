@@ -1,9 +1,9 @@
-feature 'you can see the list of stock on the page' do
+feature 'you can see the list of in stock items on the page' do
   scenario 'pick first item' do
     visit '/'
     expect(page).to have_button('add_to_cart(Leather Driver Saddle Loafers, Tan)')
     expect(page).to have_button('add_to_cart(Flip Flops, Red)')
-    expect(page).to have_button('add_to_cart(Flip Flops, Blue)')
+    expect(page).not_to have_button('add_to_cart(Flip Flops, Blue)')
     expect(page).to have_button('add_to_cart(Almond Toe Court Shoes, Patent Black)')
     expect(page).to have_button('add_to_cart(Suede Shoes, Blue)')
     expect(page).to have_button('add_to_cart(Fine Stripe Short Sleeve Shirt, Grey)')
