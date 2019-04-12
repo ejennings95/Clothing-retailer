@@ -14,5 +14,15 @@
          <input type="submit" value="Add to cart" id="add_to_cart(<%=item[:name]%>)">
        </form>
     <% end %>
+
+    <h2>Shopping Cart:</h2>
+
+    <% @shoppingcart.shoppingcart.each do |item| %>
+       <h5> <%= item %> </h5>
+       <form action="/" method="post">
+         <input type="hidden" name="item_name" value="<%= item %>">
+         <input type="submit" value="Remove from cart" id="remove_from_cart(<%=item%>)">
+       </form>
+    <% end %>
   </body>
 </html>

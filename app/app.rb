@@ -12,7 +12,6 @@ class ClothingRetailer < Sinatra::Base
 
   post '/add_to_cart' do
     session[:shoppingcart].add_to_cart(params[:item_name])
-    p session[:shoppingcart].shoppingcart
     redirect '/'
   end
 
