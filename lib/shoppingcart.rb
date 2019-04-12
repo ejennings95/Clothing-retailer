@@ -13,7 +13,9 @@ class ShoppingCart
   end
 
   def add_to_cart(item)
-    @shoppingcart << item
+    if @stock.in_stock?(item)
+      @shoppingcart << item
+    end
     total()
   end
 

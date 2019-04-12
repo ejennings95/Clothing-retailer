@@ -9,6 +9,11 @@ class Stock
     @stock
   end
 
+  def in_stock?(item)
+    @stock.each{ | product | return true if product[:name] == item && product[:quantity] > 0 }
+    false
+  end
+
   def check_price(item)
     @stock.each{ | product | return product[:price] if product[:name] == item }
     0
