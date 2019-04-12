@@ -11,7 +11,7 @@
        <h5> <%= item[:name] %>, <%= item[:category] %>, <%= item[:price] %>, <%= item[:quantity] %> </h5>
        <form action="/add_to_cart" method="post">
          <input type="hidden" name="item_name" value="<%= item[:name] %>">
-         <input type="submit" value="Add to basket" id="add_to_basket(<%=item[:name]%>)">
+         <input type="submit" value="Add to cart" id="add_to_cart(<%=item[:name]%>)">
        </form>
     <% end %>
   </body>
