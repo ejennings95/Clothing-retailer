@@ -38,4 +38,15 @@ describe 'Stock' do
       expect(@stock.in_stock?('Flip Flops, Blue')).to eq false
     end
   end
+
+  context 'increase and decrease stock' do
+    it 'should increase stock by 1' do
+      expect { @stock.increase_stock_by_1('Flip Flops, Red') }.to change { @stock.stock_list[1][:quantity] }.by 1
+    end
+
+    it 'should return false if the item is not in stock matches' do
+      expect { @stock.reduce_stock_by_1('Flip Flops, Red') }.to change { @stock.stock_list[1][:quantity] }.by -1
+    end
+  end
+
 end

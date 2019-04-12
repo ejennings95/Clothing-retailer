@@ -23,4 +23,12 @@ class Stock
     @stock.each{ | product | return true if product[:name] == item && product[:category] == category}
     false
   end
+
+  def reduce_stock_by_1(item)
+    @stock.each{ | product | product[:quantity] -= 1 if product[:name] == item }
+  end
+
+  def increase_stock_by_1(item)
+    @stock.each{ | product | product[:quantity] += 1 if product[:name] == item }
+  end
 end

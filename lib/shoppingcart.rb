@@ -14,6 +14,7 @@ class ShoppingCart
 
   def add_to_cart(item)
     if @stock.in_stock?(item)
+      @stock.reduce_stock_by_1(item)
       @shoppingcart << item
     end
     total()
@@ -21,6 +22,7 @@ class ShoppingCart
 
   def remove_from_cart(item)
     if @shoppingcart.include?(item)
+      @stock.increase_stock_by_1(item)
       @shoppingcart.delete(item)
     end
     total()

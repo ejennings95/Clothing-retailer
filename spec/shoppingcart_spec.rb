@@ -12,6 +12,7 @@ describe 'ShoppingCart' do
   context 'add_to_cart' do
     it 'should increase the cart quantity by 1' do
       allow(stock).to receive(:in_stock?).and_return(true)
+      allow(stock).to receive(:reduce_stock_by_1)
       allow(shoppingcarttotal).to receive(:total_price)
       expect { @testshoppingcart.add_to_cart("item") }.to change { @testshoppingcart.shoppingcart.length }.by 1
     end
@@ -20,12 +21,15 @@ describe 'ShoppingCart' do
   context 'remove_from_cart' do
     it 'should decrease the cart quantity by 1' do
       allow(stock).to receive(:in_stock?).and_return(true)
+      allow(stock).to receive(:reduce_stock_by_1)
       allow(shoppingcarttotal).to receive(:total_price)
       expect { @testshoppingcart.add_to_cart("item") }.to change { @testshoppingcart.shoppingcart.length }.by 1
     end
 
     it 'should remove the correct item from the cart' do
       allow(stock).to receive(:in_stock?).and_return(true)
+      allow(stock).to receive(:increase_stock_by_1)
+      allow(stock).to receive(:reduce_stock_by_1)
       allow(shoppingcarttotal).to receive(:total_price)
       @testshoppingcart.add_to_cart("item")
       @testshoppingcart.add_to_cart("item2")
@@ -38,6 +42,7 @@ describe 'ShoppingCart' do
   context 'total price returned from shoppingcarttotal' do
     it 'should pass the cart to the shoppingcarttotal and have a number returned in string format' do
       allow(stock).to receive(:in_stock?).and_return(true)
+      allow(stock).to receive(:reduce_stock_by_1)
       allow(shoppingcarttotal).to receive(:total_price).and_return('10.00')
       @testshoppingcart.add_to_cart("item")
       expect(@testshoppingcart.total(shoppingcarttotal)).to eq '10.00'
