@@ -18,6 +18,8 @@ class ShoppingCartTotal
     @price = two_decimal_places(@price)
   end
 
+  private
+
   def total_price_with_discount_check(code, shoppingcarttotal, shoppingcart)
     if code == nil || @price == 0
       @discount_price = two_decimal_places(@price)
@@ -25,8 +27,6 @@ class ShoppingCartTotal
       @discount_price = two_decimal_places(@price - @discountcodes.discount_check(code, shoppingcarttotal, shoppingcart))
     end
   end
-
-  private
 
   def two_decimal_places(amount)
     '%.2f' % amount
