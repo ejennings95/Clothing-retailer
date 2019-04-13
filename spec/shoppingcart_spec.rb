@@ -40,6 +40,18 @@ describe 'ShoppingCart' do
       expect(@testshoppingcart.shoppingcart).to include("item")
       expect(@testshoppingcart.shoppingcart).not_to include("item2")
     end
+
+    it 'should remove the item only once if added twice' do
+      allow(stock).to receive(:in_stock?).and_return(true)
+      allow(stock).to receive(:increase_stock_by_1)
+      allow(stock).to receive(:reduce_stock_by_1)
+      allow(stock).to receive(:find_item_quantity_1).and_return("item", "item")
+      allow(shoppingcarttotal).to receive(:total_price)
+      @testshoppingcart.add_to_cart("item")
+      @testshoppingcart.add_to_cart("item")
+      @testshoppingcart.remove_from_cart("item")
+      expect(@testshoppingcart.shoppingcart).to contain_exactly("item")
+    end
   end
 
   context 'total price returned from shoppingcarttotal' do
