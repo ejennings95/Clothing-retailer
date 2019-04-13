@@ -26,7 +26,7 @@
        </form>
      </div>
      <p class="mb-1"> <%= item[:category] %> </p>
-     <small>Price: £<%= item[:price] %> </small><br><small>Quantity in Stock: <%= item[:quantity] %> </small>
+     <small>Price: £<%= @format.two_decimal_places(item[:price]) %> </small><br><small>Quantity in Stock: <%= item[:quantity] %> </small>
     </div>
     <br>
     <% end %>
@@ -44,12 +44,12 @@
       </form>
     </div>
     <p class="mb-1"> <%= item[:category] %> </p>
-    <small>Price: £<%= item[:price] %> </small><br><small>Quantity in Cart <%= item[:quantity] %> </small>
+    <small>Price: £<%= @format.two_decimal_places(item[:price]) %> </small><br><small>Quantity in Cart <%= item[:quantity] %> </small>
     </div>
     <br>
     <% end %>
 
-    <h2>Total Price: £<%= @shoppingcart.shoppingcarttotal.price %></h2>
+    <h2>Total Price: £<%= @format.two_decimal_places(@shoppingcart.shoppingcarttotal.price) %></h2>
 
     <% if @shoppingcart.shoppingcarttotal.discount_price == @shoppingcart.shoppingcarttotal.price %>
       <form action="/discount_code" method="post">
@@ -57,7 +57,7 @@
         <input type="submit" value="Submit" id="discount_code_submit" class="btn btn-outline-primary btn-block">
       </form>
     <% else %>
-      <h3>Total Price With Discount Code Applied: £<%= @shoppingcart.shoppingcarttotal.discount_price %> </h3>
+      <h3>Total Price With Discount Code Applied: £<%= @format.two_decimal_places(@shoppingcart.shoppingcarttotal.discount_price) %> </h3>
     <% end %>
 
   </body>

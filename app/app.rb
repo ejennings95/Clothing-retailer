@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require_relative '../lib/shoppingcart.rb'
+require_relative '../lib/format_price.rb'
 
 class ClothingRetailer < Sinatra::Base
   enable :sessions
@@ -11,6 +12,7 @@ class ClothingRetailer < Sinatra::Base
     @shoppingcart = session[:shoppingcart]
     @code_check = session[:code_check]
     flash[:warning] = "Invaild discount code entered - try again!"
+    @format = FormatPrice.new
     erb(:index)
   end
 

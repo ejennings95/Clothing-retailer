@@ -8,7 +8,7 @@ class Stock
   def stock_list
     @stock
   end
-
+  
   def in_stock?(item)
     @stock.each{ | product | return true if product[:name] == item && product[:quantity] > 0 }
     false
