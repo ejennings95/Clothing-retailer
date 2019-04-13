@@ -4,6 +4,7 @@ describe 'ShoppingCartTotal' do
 
   let(:stock) { double(:stock) }
   let(:shoppingcart) { double(:testshoppingcart) }
+  let(:discountcodes) { double(:discountcodes) }
   let(:flipFlopsRed) { [{name: "Flip Flops, Red", category: "Men's Footwear", price: 19.00, quantity: 6}] }
   let(:denimjacket) { [{name: "Denim Jacket", category: "Men's Casualwear", price: 150.00, quantity: 11}] }
 
@@ -22,11 +23,20 @@ describe 'ShoppingCartTotal' do
       allow(stock).to receive(:check_price).and_return(19.0)
       expect(@shoppingcarttotal.total_price(nil, denimjacket)).to eq '0.00'
     end
+  end
 
+  context 'calculate discount price' do
     it 'should not be possible to add a discount to 0' do
       allow(stock).to receive(:check_price).and_return(0)
       @shoppingcarttotal.total_price("5poundsoff", [])
       expect(@shoppingcarttotal.discount_price).to eq '0.00'
+    end
+
+    it 'should return the discount price of the item' do
+      allow(stock).to receive(:check_price).and_return(19.0)
+      allow(discountcodes).to receive(:discount_check).and_return(5)
+      @shoppingcarttotal.total_price("5poundsoff", flipFlopsRed)
+      expect(@shoppingcarttotal.discount_price).to eq '14.00'
     end
   end
 end
