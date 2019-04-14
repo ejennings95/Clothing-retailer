@@ -13,7 +13,7 @@
   <% end %>
   </div>
 
-  <h1 class="col-md-4 mx-auto" style="margin-top: 25px"><b> Hello World <b></h1>
+  <h1 class="col-md-4 mx-auto" style="margin-top: 25px"><b> Hello World </b></h1>
   <div class="col-md-4 mx-auto" style="margin-top: 50px; margin-bottom: 50px;">
   <h4>Select the items you want to add to your cart below:</h4>
   <% @shoppingcart.stock.stock_list.each do |item| unless item[:quantity] == 0 %>
@@ -55,7 +55,7 @@
       <input type="submit" value="Submit" id="discount_code_submit" class="btn btn-outline-primary btn-block">
     </form>
   <% else %>
-    <h3><b>Total Price With Discount Code Applied: £<%= @format.two_decimal_places(@shoppingcart.shoppingcarttotal.discount_price) %><b></h3>
+    <h3><b>Total Price With Discount Code Applied: £<%= @format.two_decimal_places(@shoppingcart.shoppingcarttotal.discount_price) %></b></h3>
   <% end %>
   </div>
   </body>
