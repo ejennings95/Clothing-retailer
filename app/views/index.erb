@@ -6,18 +6,18 @@
     <title>Clothing Retailer</title>
   </head>
   <body>
-    <% if @code_check == false %>
-    <div class="alert alert-dismissible alert-danger">
-      <%= flash[:warning] %>
-    <% end %>
 
-    </div>
-    <h1 class="col-md-4 mx-auto" style="margin-top: 25px"> Hello World </h1>
+  <% if @code_check == false %>
+  <div class="alert alert-dismissible alert-danger">
+    <%= flash[:warning] %>
+  <% end %>
+  </div>
 
-    <div class="col-md-4 mx-auto" style="margin-top: 50px">
-    <h4>Select the items you want to add to your cart below:</h4>
-    <% @shoppingcart.stock.stock_list.each do |item| unless item[:quantity] == 0 %>
-    <div class="list-group-item list-group-item-action flex-column align-items-start active">
+  <h1 class="col-md-4 mx-auto" style="margin-top: 25px"> Hello World </h1>
+  <div class="col-md-4 mx-auto" style="margin-top: 50px">
+  <h4>Select the items you want to add to your cart below:</h4>
+  <% @shoppingcart.stock.stock_list.each do |item| unless item[:quantity] == 0 %>
+  <div class="list-group-item list-group-item-action flex-column align-items-start active">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1"> <%= item[:name] %> </h5>
        <form action="/add_to_cart" method="post">
@@ -27,15 +27,14 @@
      </div>
      <p class="mb-1"> <%= item[:category] %> </p>
      <small>Price: £<%= @format.two_decimal_places(item[:price]) %> </small><br><small>Quantity in Stock: <%= item[:quantity] %> </small>
-    </div>
-    <br>
-    <% end %>
-    <% end %>
+  </div>
+  <br>
+  <% end %>
+  <% end %>
 
-    <h2>Shopping Cart:</h2>
-
-    <% @shoppingcart.shoppingcart.each do |item| %>
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
+  <h3>Shopping Cart:</h3>
+  <% @shoppingcart.shoppingcart.each do |item| %>
+  <div class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1"> <%= item[:name] %> </h5>
       <form action="/remove_from_cart" method="post">
@@ -45,20 +44,19 @@
     </div>
     <p class="mb-1"> <%= item[:category] %> </p>
     <small>Price: £<%= @format.two_decimal_places(item[:price]) %> </small><br><small>Quantity in Cart <%= item[:quantity] %> </small>
-    </div>
-    <br>
-    <% end %>
+  </div>
+  <br>
+  <% end %>
 
-    <h2>Total Price: £<%= @format.two_decimal_places(@shoppingcart.shoppingcarttotal.price) %></h2>
-
-    <% if @shoppingcart.shoppingcarttotal.discount_price == @shoppingcart.shoppingcarttotal.price %>
-      <form action="/discount_code" method="post">
-        <input type="text" class="form-control" placeholder="Discount Code" id="discount_code" name="discount_code">
-        <input type="submit" value="Submit" id="discount_code_submit" class="btn btn-outline-primary btn-block">
-      </form>
-    <% else %>
-      <h3>Total Price With Discount Code Applied: £<%= @format.two_decimal_places(@shoppingcart.shoppingcarttotal.discount_price) %> </h3>
-    <% end %>
-
+  <h3>Total Price: £<%= @format.two_decimal_places(@shoppingcart.shoppingcarttotal.price) %></h3>
+  <% if @shoppingcart.shoppingcarttotal.discount_price == @shoppingcart.shoppingcarttotal.price %>
+    <form action="/discount_code" method="post">
+      <input type="text" class="form-control" placeholder="Discount Code" id="discount_code" name="discount_code">
+      <input type="submit" value="Submit" id="discount_code_submit" class="btn btn-outline-primary btn-block">
+    </form>
+  <% else %>
+    <h3><b>Total Price With Discount Code Applied: £<%= @format.two_decimal_places(@shoppingcart.shoppingcarttotal.discount_price) %><b></h3>
+  <% end %>
+  </div>
   </body>
 </html>
