@@ -10,7 +10,7 @@ describe 'DiscountCodes' do
     @discountcodes = DiscountCodes.new
   end
 
-  context 'discount check' do
+  context '5 pound discount' do
     it 'should return 5 if the code is correct' do
       expect(@discountcodes.discount_check('5poundsoff', 100, shoppingcartwithfootwear)).to eq 5
     end
@@ -18,8 +18,10 @@ describe 'DiscountCodes' do
     it 'should return 0 if the code is incorrect' do
       expect(@discountcodes.discount_check('wrong code', 100, shoppingcartwithfootwear)).to eq 0
     end
+  end
 
-    it 'should return 5 if the code is correct and shoppingcarttotal > 50' do
+  context '10 pound discount' do
+    it 'should return 10 if the code is correct and shoppingcarttotal > 50' do
       expect(@discountcodes.discount_check('10poundsoff', 100, shoppingcartwithfootwear)).to eq 10
     end
 
@@ -30,8 +32,10 @@ describe 'DiscountCodes' do
     it 'should return 0 if shoppingcarttotal < 50' do
       expect(@discountcodes.discount_check('10poundsoff', 1, shoppingcartwithfootwear)).to eq 0
     end
+  end
 
-    it 'should return 15 if the code is correct and shoppingcarttotal > 75' do
+  context '15 pound discount' do
+    it 'should return 15 if the code is correct, a footwear item is in the cart and shoppingcarttotal > 75' do
       allow(stock).to receive(:check_category).and_return(true)
       expect(@discountcodes.discount_check('15poundsoff', 76, shoppingcartwithfootwear, stock)).to eq 15
     end
