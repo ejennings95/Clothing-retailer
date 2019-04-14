@@ -21,11 +21,6 @@ class ShoppingCartTotal
 
   def total_price_with_discount_check(code, shoppingcarttotal, shoppingcart)
     (@price == 0) ? set_no_discount : set_discount_price(code, shoppingcarttotal, shoppingcart)
-    set_price
-  end
-
-  def set_price
-    @price = @price
   end
 
   def set_no_discount
